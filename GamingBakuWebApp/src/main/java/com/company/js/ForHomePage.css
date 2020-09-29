@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.background {
+    background-image: url("last-of-us part 2.jpg");
+    background-repeat: no-repeat;
+}
+
+.navigation-bar {
+    padding: 10px 0px 0px 40px;
+    background-color: #131718;
+}
+
+.GAMINGBAKU {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: aliceblue
+}
+
+.form-inline {
+    padding-top: 6px;
+}
+
+.container {
+    height: 70%;
+}
+
+.newspanel{
+    background: white;
+    margin: 20px 44px 0px 50px;
+    padding: 10px 20px 10px 20px;
+}
+
+figure-img{
+    width: 30px;
+    margin-left: 40px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: 170px;
+}
+
+.media-body {
+    margin-left: 20px;
+}
+
+.embed-responsive {
+    height: 200%;
+}

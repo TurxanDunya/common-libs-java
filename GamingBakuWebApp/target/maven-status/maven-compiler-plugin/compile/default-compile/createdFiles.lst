@@ -1,0 +1,5 @@
+com\gamingbaku\ServletInitializer.class
+com\gamingbaku\controller\UserRestController.class
+com\gamingbaku\dto\UserDTO.class
+com\gamingbaku\dto\ResponseDTO.class
+com\gamingbaku\GamingBakuWebAppApplication.class

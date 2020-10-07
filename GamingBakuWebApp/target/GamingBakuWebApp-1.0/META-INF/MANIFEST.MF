@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Title: GamingBakuWebApp
-Implementation-Version: 1.0
-Built-By: TD-PC
-Implementation-Vendor-Id: com.company
-Created-By: IntelliJ IDEA
-Build-Jdk: 1.8.0_171
-Main-Class: ${start-class}
-

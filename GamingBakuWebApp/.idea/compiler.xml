@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="GBWebApp" />
+        <module name="GamingBakuWebApp" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="GBWebApp" target="1.8" />
+      <module name="GamingBakuWebApp" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

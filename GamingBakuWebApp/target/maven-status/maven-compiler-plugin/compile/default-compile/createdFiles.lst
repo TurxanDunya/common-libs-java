@@ -1,5 +1,9 @@
+com\gamingbaku\security\ResourceServerConfig.class
+com\gamingbaku\dto\UserDTO.class
+com\gamingbaku\GamingBakuWebAppApplication.class
 com\gamingbaku\ServletInitializer.class
 com\gamingbaku\controller\UserRestController.class
-com\gamingbaku\dto\UserDTO.class
+com\gamingbaku\security\AuthorizationServerConfig.class
 com\gamingbaku\dto\ResponseDTO.class
-com\gamingbaku\GamingBakuWebAppApplication.class
+com\gamingbaku\security\CustomCorsFilter.class
+com\gamingbaku\security\SecurityConfig.class

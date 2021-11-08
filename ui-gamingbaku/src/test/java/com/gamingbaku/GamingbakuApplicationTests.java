@@ -1,4 +1,4 @@
-package com.gamingbaku.gamingbaku;
+package com.gamingbaku;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

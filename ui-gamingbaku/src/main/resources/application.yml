@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: GamingBaku
+
+server:
+  port: 8589

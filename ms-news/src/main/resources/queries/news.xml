@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>News Queries</comment>
+
+    <entry key="news.query.findById">
+        <![CDATA[
+             WITH t_acct AS (SELECT ac.accountno account_number,
+                                    ac.currencyno currency,
+               FROM t_acct act,
+                    t_entry_sum_agg esa
+        ]]>
+    </entry>
+
+</properties>

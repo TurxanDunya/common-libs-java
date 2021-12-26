@@ -1,13 +1,13 @@
-package com.gamingbaku.msuser;
+package com.gamingbaku.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MsUserApplication {
+public class MsNewsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MsUserApplication.class, args);
+        SpringApplication.run(MsNewsApplication.class, args);
     }
 
 }

@@ -25,7 +25,7 @@ spring:
   datasource:
     url: jdbc:oracle:thin:@localhost:1521/orclpdb
     username: hr
-    password: hr
+    password: hr1
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: oracle.jdbc.OracleDriver
     hikari:

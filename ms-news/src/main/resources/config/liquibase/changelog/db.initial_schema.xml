@@ -15,6 +15,9 @@
             <column name="BODY" type="VARCHAR2(400)">
                 <constraints nullable="false"/>
             </column>
+            <column name="TYPE" type="VARCHAR2(15)">
+                <constraints nullable="false"/>
+            </column>
             <column name="MODIFY_DATE" type="VARCHAR2(20)"> <!-- Change date type -->
                 <constraints nullable="false"/>
             </column>

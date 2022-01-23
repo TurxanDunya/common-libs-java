@@ -1,8 +1,11 @@
 package com.projecthope.news.controller;
 
 import com.projecthope.news.dto.request.CreateNewsRequestDto;
+import com.projecthope.news.dto.request.NewsFilter;
 import com.projecthope.news.dto.response.CreateNewsResponseDto;
-import com.projecthope.news.service.UserService;
+import com.projecthope.news.dto.response.NewsDto;
+import com.projecthope.news.dto.response.NewsResponseDto;
+import com.projecthope.news.service.NewsService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,16 +21,21 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class NewsController {
 
-    private final UserService userService;
+    private final NewsService newsService;
 
     @PostMapping
     public CreateNewsResponseDto create(@Valid @RequestBody CreateNewsRequestDto requestDto) {
-        return userService.create(requestDto);
+        return newsService.create(requestDto);
     }
 
     @GetMapping("/{id}")
-    public CreateNewsRequestDto findById(@PathVariable("id") Long id) {
-        return userService.findById(id);
+    public NewsDto findById(@PathVariable("id") Long id) {
+        return newsService.findById(id);
+    }
+
+    @GetMapping
+    public NewsResponseDto findAll(@Valid NewsFilter filter) {
+        return newsService.findAll(filter);
     }
 
 }

@@ -35,3 +35,21 @@ spring:
       connection-test-query: SELECT 1 FROM dual
       idle-timeout: 60000
       max-lifetime: 120000
+
+news:
+  initial-limit: 10
+  max-limit: 20
+  default-offset: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: "http://localhost:8888/eureka"
+    fetch-registry: true
+    register-with-eureka: true
+
+# if you call this application with feign or restTemplate, instead of using
+# localhost:8081/content/upload, just use ms-news/content/upload.
+# eureka maintains this for us. REMEMBER!!!
+
+# when using feign, for handling load balancing, examine and use @LoadBalanced annotation

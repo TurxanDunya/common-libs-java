@@ -1,8 +1,12 @@
 package com.projecthope.news.error.validation.constraints;
 
-public interface ErrorMessage {
+public final class ErrorMessages {
 
-    String EMPTY_HEADER = "validation.emptyHeader.message";
-    String EMPTY_BODY = "validation.emptyBody.message";
+    public static final String EMPTY_HEADER = "validation.emptyHeader.message";
+    public static final String EMPTY_BODY = "validation.emptyBody.message";
+    public static final String INVALID_NEWS_TYPE = "validation.invalidNewsType.message";
+
+    private ErrorMessages() {
+    }
 
 }

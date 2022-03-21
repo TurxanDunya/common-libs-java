@@ -4,7 +4,7 @@ server:
 logging:
   level:
     ROOT: WARN
-    com.gamingbaku.user: DEBUG
+    com.projecthope.news: DEBUG
 
 spring:
   application:
@@ -12,20 +12,12 @@ spring:
   messages:
     basename: i18n/messages
     encoding: UTF-8
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.Oracle12cDialect
-    show-sql: true
-    hibernate:
-      ddl-auto: create #it will be validate, for now on the purpose of test it is create
-    open-in-view: false
   liquibase:
     change-log: classpath:config/liquibase/db.master-changelog.xml
   datasource:
-    url: jdbc:oracle:thin:@localhost:1521/orclpdb
-    username: hr
-    password: hr1
+    url: jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain
+    username: hope
+    password: hardpassword
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: oracle.jdbc.OracleDriver
     hikari:
@@ -36,7 +28,7 @@ spring:
       idle-timeout: 60000
       max-lifetime: 120000
 
-news:
+news-paging:
   initial-limit: 10
   max-limit: 20
   default-offset: 0

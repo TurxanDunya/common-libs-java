@@ -6,7 +6,6 @@ import com.projecthope.news.dto.response.CreateNewsResponseDto;
 import com.projecthope.news.dto.response.NewsDto;
 import com.projecthope.news.dto.response.NewsResponseDto;
 import com.projecthope.news.service.NewsService;
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,10 +17,13 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/news")
-@AllArgsConstructor
 public class NewsController {
 
     private final NewsService newsService;
+
+    public NewsController(NewsService newsService) {
+        this.newsService = newsService;
+    }
 
     @PostMapping
     public CreateNewsResponseDto create(@Valid @RequestBody CreateNewsRequestDto requestDto) {
@@ -29,7 +31,7 @@ public class NewsController {
     }
 
     @GetMapping("/{id}")
-    public NewsDto findById(@PathVariable("id") Long id) {
+    public NewsDto findById(@PathVariable Long id) {
         return newsService.findById(id);
     }
 

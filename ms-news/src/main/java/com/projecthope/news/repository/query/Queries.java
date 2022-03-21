@@ -2,10 +2,10 @@ package com.projecthope.news.repository.query;
 
 public enum Queries {
 
-    CREATE_NEWS("createNews"),
+    CREATE("create"),
     FIND_LAST_ADDED("lastAdded"),
-    FIND_ALL_NEWS("findAllNews"),
-    FIND_BY_ID("findById");
+    FIND_BY_ID("findById"),
+    FIND_ALL("findAll");
 
     private final String key;
 

@@ -1,33 +1,36 @@
 package com.projecthope.news.repository.query;
 
-import com.projecthope.news.dto.NewsType;
 import com.projecthope.news.dto.request.NewsFilter;
+
+import java.util.Objects;
 
 public final class QueryPart {
 
     public static final String QUERY_FILTER_PART_KEY = "\\{QUERY_FILTER_PART\\}";
 
     public static void applyNewsTypeFilter(NewsFilter filter, StringBuilder queryFilterPart) {
-        if (filter.getType() == NewsType.GAME) {
-            String queryPart = " (pr.prefix LIKE '5%' OR pr.prefix LIKE '6%') ";
-            queryFilterPart.append(queryPart);
+        String queryPart = "";
+
+        if (Objects.isNull(filter.getType())) {
+            return;
         }
 
-        if (filter.getType() == NewsType.FILM) {
-
+        switch (filter.getType()) {
+            case GAME:
+                queryPart = " WHERE type = 1 ";
+                break;
+            case FILM:
+                queryPart = " WHERE type = 2 ";
+                break;
+            case TECHNO:
+                queryPart = " WHERE type = 3 ";
+                break;
+            case OTHER:
+                queryPart = " WHERE type = 4 ";
+                break;
         }
 
-        if (filter.getType() == NewsType.TECHNO) {
-
-        }
-
-        if (filter.getType() == NewsType.OTHER) {
-
-        }
-
-        if (filter.getType() == NewsType.ALL) {
-
-        }
+        queryFilterPart.append(queryPart);
     }
 
     public static String applyPaging(NewsFilter filter, String query) {

@@ -1,4 +1,4 @@
-package com.projecthope.news.config.properties;
+package com.projecthope.news.config.i18n;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;

@@ -6,27 +6,36 @@
     <entry key="news.query.create">
         <![CDATA[
             INSERT
-                INTO news
+              INTO news
             VALUES(NEWS_SEQ.nextval,
                   :header,
                   :body,
                   :type,
-                  :pictureKey,
-                  :lastModified);
+                  :lastModified,
+                  :pictureKey)
         ]]>
     </entry>
 
     <entry key="news.query.lastAdded">
         <![CDATA[
             SELECT
-                MAX(id)
-            FROM news;
+               MAX(id)
+              FROM news
         ]]>
     </entry>
 
-    <entry key="bin.query.findAll">
+    <entry key="news.query.findById">
         <![CDATA[
+            SELECT *
+              FROM news
+             WHERE id=:id
+        ]]>
+    </entry>
 
+    <entry key="news.query.findAll">
+        <![CDATA[
+            SELECT *
+              FROM news {QUERY_FILTER_PART}
         ]]>
     </entry>
 

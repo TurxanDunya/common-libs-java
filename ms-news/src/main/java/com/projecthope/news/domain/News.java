@@ -1,6 +1,5 @@
 package com.projecthope.news.domain;
 
-import com.projecthope.news.dto.NewsType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,8 +14,8 @@ public class News {
     private Long id;
     private String header;
     private String body;
-    private String pictureKey;
-    private NewsType type;
+    private Integer type;
     private LocalDateTime lastModified;
+    private String pictureKey;
 
 }

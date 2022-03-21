@@ -12,14 +12,17 @@
             <column name="HEADER" type="VARCHAR2(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="BODY" type="VARCHAR2(400)">
+            <column name="BODY" type="VARCHAR2(500)">
                 <constraints nullable="false"/>
             </column>
-            <column name="TYPE" type="VARCHAR2(15)">
+            <column name="TYPE" type="NUMBER(2)">
                 <constraints nullable="false"/>
             </column>
-            <column name="MODIFY_DATE" type="VARCHAR2(20)"> <!-- Change date type -->
+            <column name="LAST_MODIFIED" type="DATE">
                 <constraints nullable="false"/>
+            </column>
+            <column name="PICTURE_KEY" type="VARCHAR2(100)">
+                <constraints nullable="true"/>
             </column>
         </createTable>
         <createSequence sequenceName="NEWS_SEQ"

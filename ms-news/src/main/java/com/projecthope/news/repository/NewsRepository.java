@@ -7,9 +7,11 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public class NewsRepository {
@@ -23,30 +25,28 @@ public class NewsRepository {
         this.queryHolder = queryHolder;
     }
 
-    //     TODO add @Transactional
+    @Transactional
     public Long create(News news) {
         Map<String, Object> params = new HashMap<>();
         params.put("header", news.getHeader());
         params.put("body", news.getBody());
         params.put("type", news.getType());
-        params.put("pictureKey", news.getPictureKey());
         params.put("lastModified", news.getLastModified());
+        params.put("pictureKey", news.getPictureKey());
 
-        jdbcTemplate.update(queryHolder.get(Queries.CREATE_NEWS), params);
+        jdbcTemplate.update(queryHolder.get(Queries.CREATE), params);
 
         return jdbcTemplate.queryForObject(
-                queryHolder.get(Queries.FIND_LAST_ADDED),
-                new HashMap<>(),
-                new BeanPropertyRowMapper<>(Long.class));
+                queryHolder.get(Queries.FIND_LAST_ADDED), new HashMap<>(), Long.class);
     }
 
-    public News findById(Long id) {
-        var params = Map.of("id", id);
-
-        return jdbcTemplate.queryForObject(
+    public Optional<News> findById(Long id) {
+        List<News> news = jdbcTemplate.query(
                 queryHolder.get(Queries.FIND_BY_ID),
-                params,
+                Map.of("id", id),
                 new BeanPropertyRowMapper<>(News.class));
+
+        return news.stream().findFirst();
     }
 
     public List<News> findAll(String query) {

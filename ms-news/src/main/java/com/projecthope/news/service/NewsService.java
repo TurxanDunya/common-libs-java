@@ -15,17 +15,12 @@ import com.projecthope.news.repository.query.QueryPart;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
-
-import static net.logstash.logback.argument.StructuredArguments.kv;
 
 @Slf4j
 @Service
 public class NewsService {
-
-    private static final String REQUEST_KEY = "request";
 
     private final NewsRepository newsRepository;
     private final NewsMapper newsMapper;
@@ -43,21 +38,21 @@ public class NewsService {
     }
 
     public CreateNewsResponseDto create(CreateNewsRequestDto requestDto) {
-        log.info("Requested for creating news: {}", kv(REQUEST_KEY, requestDto));
+        log.info("Requested for creating news: {}", requestDto);
         News news = newsMapper.toNews(requestDto);
-        news.setLastModified(LocalDateTime.now());
-        // TODO: pass picture object to ms-content and get object key
+        // TODO: pass picture object to ms-content and get object key in future
 
-        Long lastAddedObjectId = newsRepository.create(news);
-        return new CreateNewsResponseDto(lastAddedObjectId);
+        Long lastAddedNewsId = newsRepository.create(news);
+        log.info("News created successfully: {}", lastAddedNewsId);
+        return new CreateNewsResponseDto(lastAddedNewsId);
     }
 
     public NewsDto findById(Long id) {
-        News news = newsRepository.findById(id);
-        return newsMapper.toNewsDto(news);
+        return newsRepository.findById(id).stream()
+                .findFirst()
+                .map(newsMapper::toNewsDto)
+                .orElseThrow(RuntimeException::new);
     }
-
-    // findByLastModifyDate
 
     public NewsResponseDto findAll(NewsFilter filter) {
         Integer limit = Objects.nonNull(filter.getLimit()) ?
@@ -75,7 +70,7 @@ public class NewsService {
         final StringBuilder queryFilterPart = new StringBuilder();
         QueryPart.applyNewsTypeFilter(filter, queryFilterPart);
 
-        String query = queryHolder.get(Queries.FIND_ALL_NEWS)
+        String query = queryHolder.get(Queries.FIND_ALL)
                 .replaceAll(QueryPart.QUERY_FILTER_PART_KEY, queryFilterPart.toString());
         String queryValue = QueryPart.applyPaging(filter, query);
 
@@ -85,7 +80,8 @@ public class NewsService {
         if (hasNext)
             news.remove(filter.getLimit() - 1);
 
-        return new NewsResponseDto(hasNext, news);
+        List<NewsDto> newsDtoList = newsMapper.toNewsDtoList(news);
+        return new NewsResponseDto(hasNext, newsDtoList);
     }
 
 }

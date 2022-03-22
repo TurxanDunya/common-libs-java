@@ -26,8 +26,8 @@ public class NewsController {
     }
 
     @PostMapping
-    public CreateNewsResponseDto create(@Valid @RequestBody CreateNewsRequestDto requestDto) {
-        return newsService.create(requestDto);
+    public CreateNewsResponseDto create(@Valid @RequestBody CreateNewsRequestDto request) {
+        return newsService.create(request);
     }
 
     @GetMapping("/{id}")
@@ -36,7 +36,7 @@ public class NewsController {
     }
 
     @GetMapping
-    public NewsResponseDto findAll(@Valid NewsFilter filter) {
+    public NewsResponseDto findAll(NewsFilter filter) {
         return newsService.findAll(filter);
     }
 

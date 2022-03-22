@@ -7,6 +7,8 @@ import com.projecthope.news.dto.request.NewsFilter;
 import com.projecthope.news.dto.response.CreateNewsResponseDto;
 import com.projecthope.news.dto.response.NewsDto;
 import com.projecthope.news.dto.response.NewsResponseDto;
+import com.projecthope.news.error.ErrorCodes;
+import com.projecthope.news.error.ServiceException;
 import com.projecthope.news.mapper.NewsMapper;
 import com.projecthope.news.repository.NewsRepository;
 import com.projecthope.news.repository.query.Queries;
@@ -51,7 +53,8 @@ public class NewsService {
         return newsRepository.findById(id).stream()
                 .findFirst()
                 .map(newsMapper::toNewsDto)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> ServiceException.of(
+                        ErrorCodes.NEWS_NOT_FOUND, "News not found for given id: " + id));
     }
 
     public NewsResponseDto findAll(NewsFilter filter) {

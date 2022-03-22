@@ -15,10 +15,9 @@ public class ErrorMessageTranslator {
         this.messageSource = messageSource;
     }
 
-    // We will use this on exception handling for returning appropriate error message
-    public String toLocale(String messageCode) {
+    public String toLocale(String errorCode) {
         Locale locale = LocaleContextHolder.getLocale();
-        return messageSource.getMessage("error." + messageCode, null, locale);
+        return messageSource.getMessage("error." + errorCode, null, locale);
     }
 
 }

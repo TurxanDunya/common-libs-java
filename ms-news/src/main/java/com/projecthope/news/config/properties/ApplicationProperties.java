@@ -8,5 +8,4 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("application")
 public class ApplicationProperties {
-
 }

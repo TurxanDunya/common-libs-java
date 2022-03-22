@@ -43,5 +43,4 @@ eureka:
 # if you call this application with feign or restTemplate, instead of using
 # localhost:8081/content/upload, just use ms-news/content/upload.
 # eureka maintains this for us. REMEMBER!!!
-
 # when using feign, for handling load balancing, examine and use @LoadBalanced annotation

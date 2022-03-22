@@ -17,7 +17,7 @@ public class CreateNewsRequestDto {
     @NotEmpty(message = ErrorMessages.EMPTY_BODY)
     private String body;
 
-    @NotNull(message = ErrorMessages.EMPTY_BODY)
+    @NotNull(message = ErrorMessages.INVALID_NEWS_TYPE)
     private NewsType type;
     private MultipartFile picture;
 

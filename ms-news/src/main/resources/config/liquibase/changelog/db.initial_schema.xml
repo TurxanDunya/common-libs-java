@@ -10,17 +10,22 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="HEADER" type="VARCHAR2(100)">
-                <constraints unique="true" nullable="false"/>
-            </column>
-            <column name="BODY" type="VARCHAR2(40)">
                 <constraints nullable="false"/>
             </column>
-            <column name="DESTINATION" type="VARCHAR2(20)">
+            <column name="BODY" type="VARCHAR2(500)">
                 <constraints nullable="false"/>
+            </column>
+            <column name="TYPE" type="NUMBER(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LAST_MODIFIED" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PICTURE_KEY" type="VARCHAR2(100)">
+                <constraints nullable="true"/>
             </column>
         </createTable>
-        <addDefaultValue tableName="MAIL_WHITELIST" columnName="DESTINATION" defaultValue="*"/>
-        <createSequence sequenceName="MAIL_WHITELIST_SEQ"
+        <createSequence sequenceName="NEWS_SEQ"
                         startValue="1"
                         incrementBy="1"
                         cycle="false"

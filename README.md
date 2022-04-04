@@ -1,1 +1,1 @@
-This is official project of GamingBaku
+This project describes how my learning path is widening:)

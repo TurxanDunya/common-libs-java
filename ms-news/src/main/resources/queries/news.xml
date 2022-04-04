@@ -3,12 +3,39 @@
 <properties>
     <comment>News Queries</comment>
 
+    <entry key="news.query.create">
+        <![CDATA[
+            INSERT
+              INTO news
+            VALUES(NEWS_SEQ.nextval,
+                  :header,
+                  :body,
+                  :type,
+                  :lastModified,
+                  :pictureKey)
+        ]]>
+    </entry>
+
+    <entry key="news.query.lastAdded">
+        <![CDATA[
+            SELECT
+               MAX(id)
+              FROM news
+        ]]>
+    </entry>
+
     <entry key="news.query.findById">
         <![CDATA[
-             WITH t_acct AS (SELECT ac.accountno account_number,
-                                    ac.currencyno currency,
-               FROM t_acct act,
-                    t_entry_sum_agg esa
+            SELECT *
+              FROM news
+             WHERE id=:id
+        ]]>
+    </entry>
+
+    <entry key="news.query.findAll">
+        <![CDATA[
+            SELECT *
+              FROM news {QUERY_FILTER_PART}
         ]]>
     </entry>
 

@@ -1,0 +1,34 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+/uiDesigner.xml
+/.gradle/buildOutputCleanup/cache.properties
+/.gradle/7.4.1/checksums/checksums.lock
+/.idea/compiler.xml
+/.gradle/7.4.1/dependencies-accessors/dependencies-accessors.lock
+/.gradle/7.4.1/executionHistory/executionHistory.bin
+/.gradle/7.4.1/executionHistory/executionHistory.lock
+/.gradle/file-system.probe
+/.gradle/7.4.1/fileHashes/fileHashes.bin
+/.gradle/7.4.1/fileHashes/fileHashes.lock
+/.gradle/7.4.1/dependencies-accessors/gc.properties
+/.gradle/7.4.1/gc.properties
+/.gradle/vcs-1/gc.properties
+/.idea/jarRepositories.xml
+/.gradle/7.4.1/fileChanges/last-build.bin
+/.gradle/7.4.1/checksums/md5-checksums.bin
+/.idea/misc.xml
+/.gradle/buildOutputCleanup/outputFiles.bin
+/.gradle/7.4.1/fileHashes/resourceHashesCache.bin
+/.gradle/7.4.1/checksums/sha1-checksums.bin
+/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_04_22_23_29_[Changes]/shelved.patch
+/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_04_22_23_29_[Changes]1/shelved.patch
+/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_04_22_23_31_[Changes]/shelved.patch
+/.idea/uiDesigner.xml
+/.idea/vcs.xml
+/.idea/workspace.xml

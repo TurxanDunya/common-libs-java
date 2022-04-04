@@ -1,0 +1,25 @@
+server:
+  port: 8084
+
+logging:
+  level:
+    ROOT: INFO
+    com.projecthope.swagger: DEBUG
+
+spring:
+  application:
+    name: api-swagger
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+# to make it work properly we have to add gateway for microservices
+application:
+  swagger:
+    refresh-interval: 60000
+    host: localhost:8080
+    version: 3.0
+    definitions:
+      - name: news
+        url: http://ms-news/v2/api-docs
+        basePath: /api

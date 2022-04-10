@@ -8,4 +8,4 @@ server:
 eureka:
   client:
     fetch-registry: false
-    register-with-eureka: false
+    register-with-eureka: false #do not register this service self as client

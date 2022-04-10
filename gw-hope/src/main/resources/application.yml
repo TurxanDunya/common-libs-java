@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: gw-hope
+  cloud:
+    gateway:
+      routes:
+        - id: ms-news
+          uri: ms-news
+          predicates:
+            - Path=/news/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
+
+server:
+  port: 8088
+
+eureka:
+  client:
+    service-url:
+      defaultZone: "http://localhost:8888/eureka"
+    fetch-registry: true
+    register-with-eureka: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    ROOT: WARN
+    com.projecthope.news: DEBUG

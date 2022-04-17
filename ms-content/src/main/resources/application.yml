@@ -9,6 +9,7 @@ spring:
     secret-key: pr0ject-hope
     url: http://127.0.0.1:9000
     bucket: news
+    expiry-time: 3600 #1 hour
   servlet:
     multipart:
       enabled: true

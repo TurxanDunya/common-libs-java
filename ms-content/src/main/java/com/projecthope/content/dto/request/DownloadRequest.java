@@ -8,12 +8,15 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class UploadRequest {
+public class DownloadRequest {
 
-    @NotNull(message = ErrorMessages.INVALID_BUCKET)
-    private ContentClientBucket contentClient;
+    @NotEmpty(message = ErrorMessages.INVALID_DOWNLOAD_KEY)
+    private String presignedUrl;
 
     @NotEmpty(message = ErrorMessages.INVALID_FILE_NAME)
     private String fileName;
+
+    @NotNull(message = ErrorMessages.INVALID_BUCKET)
+    private ContentClientBucket contentClientBucket;
 
 }

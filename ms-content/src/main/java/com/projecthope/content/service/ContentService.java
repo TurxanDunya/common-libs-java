@@ -5,6 +5,7 @@ import com.projecthope.content.config.properties.MinioProperties;
 import com.projecthope.content.dto.request.DownloadRequest;
 import com.projecthope.content.dto.request.UploadRequest;
 import com.projecthope.content.dto.response.UploadResponse;
+import com.projecthope.content.error.ServiceException;
 import com.projecthope.content.model.ContentClientBucket;
 import io.minio.GetObjectArgs;
 import io.minio.GetPresignedObjectUrlArgs;
@@ -17,6 +18,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.projecthope.content.error.ErrorCodes.FILE_DOWNLOAD_ERROR;
+import static com.projecthope.content.error.ErrorCodes.FILE_UPLOAD_ERROR;
 
 @Slf4j
 @Service
@@ -61,10 +65,7 @@ public class ContentService {
 
             return new UploadResponse(request.getFileName(), presignedObjectUrl);
         } catch (Exception e) {
-            log.error("Occured error when upload file");
-//            throw ServiceException.of(
-//                    ErrorCodes.FILE_UPLOAD_ERROR, "Error occurred when upload file");
-            throw new RuntimeException("Occurred error when upload file");
+            throw ServiceException.of(FILE_UPLOAD_ERROR, "Error occurred when upload file");
         }
     }
 
@@ -81,7 +82,7 @@ public class ContentService {
         try {
             bytes = minioClient.getObject(objectArgs).readAllBytes();
         } catch (Exception e) {
-            throw new RuntimeException("Occurred error when upload file");
+            throw ServiceException.of(FILE_DOWNLOAD_ERROR, "Error occurred when upload file");
         }
 
         return new ByteArrayResource(bytes);

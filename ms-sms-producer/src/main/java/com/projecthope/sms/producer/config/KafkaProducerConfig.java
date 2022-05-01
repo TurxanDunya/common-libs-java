@@ -1,5 +1,6 @@
 package com.projecthope.sms.producer.config;
 
+import com.projecthope.sms.producer.dto.request.SmsRequestDto;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,13 +28,13 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public ProducerFactory<String, String> producerFactory() {
+    public ProducerFactory<String, SmsRequestDto> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
     @Bean
-    public KafkaTemplate<String, String> kafkaTemplate(
-            ProducerFactory<String, String> producerFactory) {
+    public KafkaTemplate<String, SmsRequestDto> kafkaTemplate(
+            ProducerFactory<String, SmsRequestDto> producerFactory) {
         return new KafkaTemplate<>(producerFactory);
     }
 

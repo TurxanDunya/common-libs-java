@@ -1,5 +1,6 @@
 package com.projecthope.sms.producer;
 
+import com.projecthope.sms.producer.dto.request.SmsRequestDto;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,9 +16,9 @@ public class MsSmsProducerApplication {
 
 	//Notice that depends on your message type, KafkaTemplate map value will be changed prior to it
 	@Bean
-	CommandLineRunner commandLineRunner(KafkaTemplate<String, String> kafkaTemplate) {
+	CommandLineRunner commandLineRunner(KafkaTemplate<String, SmsRequestDto> kafkaTemplate) {
 		return args -> {
-			kafkaTemplate.send("sms", "Hello Kafka!");
+			kafkaTemplate.send("sms", new SmsRequestDto());
 		};
 	}
 

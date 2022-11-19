@@ -1,8 +1,0 @@
-rootProject.name = 'projecthope'
-
-include('api-swagger')
-include('eureka-server')
-include('gw-hope')
-include('ms-content')
-include('ms-news')
-include('ui-gamingbaku')

@@ -56,14 +56,17 @@ services:
       
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.8
+    container_name: zookeeper
     ports:
       - "2181:2181"
     volumes:
       - "zookeeper_data:/bitnami"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+      
   kafka:
     image: docker.io/bitnami/kafka:3.1
+    container_name: zookeeper
     ports:
       - "9092:9092"
     volumes:
@@ -74,8 +77,46 @@ services:
     depends_on:
       - zookeeper
 
+  kafdrop:
+    image: obsidiandynamics/kafdrop
+    container_name: kafdrop
+    restart: "no"
+    ports:
+      - "9000:9000"
+    environment:
+      KAFKA_BROKERCONNECT: "kafka:9092"
+      JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
+    depends_on:
+      - "kafka"
+      
+  mongodb:
+    image: mongo:4.4.0
+    container_name: mongodb
+    ports:
+      - 27017:27017
+  #  volumes:
+  #    - data:/data
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=rootuser
+      - MONGO_INITDB_ROOT_PASSWORD=rootpass
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=rootuser
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+
 volumes:
   zookeeper_data:
     driver: local
   kafka_data:
     driver: local
+
+networks:
+  default:
+    name: mongodb_network

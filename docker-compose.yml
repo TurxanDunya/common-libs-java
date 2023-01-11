@@ -22,6 +22,8 @@ services:
 #  GRANT ALL PRIVILEGES TO hope;
 #  after connect DATAGRIP ORACLE_SERVICE_NAME=ORCLCDB.localdomain
 
+# To download Oracle DB for mac M1 with colima: https://oralytics.com/2022/09/22/running-oracle-database-on-docker-on-apple-m1-chip/
+
   minio:
     image: minio/minio:RELEASE.2022-03-22T02-05-10Z
     container_name: minio
@@ -53,6 +55,20 @@ services:
       /usr/bin/mc policy download news;
       exit 0;
       '
+
+  redis:
+    container_name: cache
+    image: redis
+    ports:
+      - 6379:6379
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: ghcr.io/joeferner/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8085:8081"
       
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.8

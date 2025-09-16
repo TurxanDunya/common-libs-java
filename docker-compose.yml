@@ -71,7 +71,7 @@ services:
       - "8085:8081"
 
   zookeeper:
-    image: confluent/zookeeper
+    image: confluentinc/cp-zookeeper:6.0.0
     ports:
       - "2181:2181"
   kafka:
